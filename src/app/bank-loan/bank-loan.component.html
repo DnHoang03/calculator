@@ -1,0 +1,96 @@
+<header class="section-header">
+    <h1 class="text-title text-center">CÔNG CỤ TÍNH LÃI SUẤT VAY NGÂN HÀNG</h1>
+    <p class="text-sapo"><em>Công cụ tính lãi suất vay ngân hàng của LuatVietnam giúp bạn dự tính được số tiền lãi phải
+            trả định kỳ, tổng gốc và lãi trong từng thời điểm. Từ đó dễ dàng hoạch định tài chính tốt nhất cho
+            mình.</em></p>
+</header>
+<div class="section-content">
+    <div class="block-content">
+        <form (ngSubmit)="typeCalculate?calculateType2():calculateType1()" class="form-control-bg">
+            <div class="form-group">
+                <div class="item-inline m-block">
+                    <label class="label-lai-suat"><strong>Số tiền vay</strong></label>
+                </div>
+                <div class="item-inline m-block">
+                    <div class="in-group">
+                        <input id="deposit" [(ngModel)]="deposit" [ngModelOptions]="{standalone: true}" name="deposit"
+                            class="input wd-text" placeholder="1.000.000">
+                        <span class="text-vnd">VNĐ</span>
+                    </div>
+                </div>
+                <div class="item-inline m-block"><label class="label-lai-suat"><strong>Lãi suất vay</strong></label>
+                </div>
+                <div class="item-inline m-block">
+                    <div class="in-group">
+                        <input id="interest" [(ngModel)]="interest" [ngModelOptions]="{standalone: true}" maxlength="10"
+                            class="input wd-text">
+                        <span class="text-vnd">%/năm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="item-inline m-block"><label class="label-lai-suat"><strong>Kỳ hạn vay</strong></label>
+                </div>
+                <div class="item-inline m-block">
+                    <div class="in-group">
+                        <input id="term" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" class="input wd-text">
+                        <span class="text-vnd">Tháng</span>
+                    </div>
+                </div>
+                <div class="item-inline m-block"><label class="label-lai-suat"><strong>Phương pháp
+                            tính:</strong></label></div>
+                <div class="item-inline m-block align-top fx-top">
+                    <div class="row-inline">
+                        <label class="item-inline">
+                            <input class="radio item-inline" name="ck" type="radio" [(ngModel)]="typeCalculate"
+                                [value]="true"> Trả trên dư nợ giảm dần
+                        </label>
+                    </div>
+                    <div class="row-inline">
+                        <label class="item-inline">
+                            <input class="radio item-inline" name="ck" type="radio" [(ngModel)]="typeCalculate" [value]="false"> Trả
+                            trên dư nợ ban đầu
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="item-inline fx-width300">
+                    <button class="btn btn-default uppercase btn-full btn-action">Thực hiện</button>
+                </div>
+            </div>
+        </form>
+        <div *ngIf="!isError && isActive">
+            <div class="bang-group" id="result_tinh">
+                <table class="table table-bordered fn-17">
+                    <tbody>
+                        <tr class="bgtr1">
+                            <td class="td-50"><strong>Số tiền vay</strong></td>
+                            <td class="td-50 text-right">
+                                <div class="div-money"><strong class="color-law">{{deposit}} VNĐ</strong></div>
+                            </td>
+                        </tr>
+                        <tr class="bgtr2">
+                            <td><strong>Số tiền lãi phải trả</strong></td>
+                            <td class="text-right">
+                                <div class="div-money">{{totalInterest}} VNĐ</div>
+                            </td>
+                        </tr>
+                        <tr class="bgtr1">
+                            <td><strong>Tổng số gốc và lãi phải trả</strong></td>
+                            <td class="text-right">
+                                <div class="div-money"><strong class="color-red">{{total}} VNĐ</strong></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div *ngIf="isError">
+            <div class="bang-group">
+                <p class="color-red">Hãy nhập đầy đủ thông tin số tiền gửi, lãi suất gửi, kỳ hạn gửi để thực hiện tính
+                    lãi suất tiết kiệm.</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    color: #222222;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
